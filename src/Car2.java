@@ -1,8 +1,9 @@
 import java.awt.*;
 
-public class Mario {
-    String name;
-    Image Image;
+public class Car2 {
+    public static String name;
+    Image aliveimage;
+    Image deadimage;
     int xpos;
     int ypos;
     int speed;
@@ -11,13 +12,17 @@ public class Mario {
     int width;
     int height;
     Rectangle hitbox;
+    boolean isalive = true;
 
-    public Mario() {
+
+
+    public Car2() {
         hitbox = new Rectangle(xpos, ypos, width, height);
         //convention for making a rectangle
     }
 
-    public Mario(int xposInput, int yposInput, double dxInput, double dyInput, int widthInput, int heightInput) {
+
+    public Car2(int xposInput, int yposInput, double dxInput, double dyInput, int widthInput, int heightInput) {
         xpos = xposInput;
         ypos = yposInput;
         dx = dxInput;
@@ -26,12 +31,42 @@ public class Mario {
         height = heightInput;
 
         hitbox = new Rectangle(xpos, ypos, width, height);
-        //overloaded constructor... we have two constructors for Mario. one does the same thing.
+        //overloaded constructor... we have two constructors for Bowser. one does the same thing.
         //the second takes in a bunch of stuff. when you have a constructor and give it no input, it does
         //the first one. if you give context it bypasses the first and goes straight to the second one.
         //this is overloaded constructor
     }
 
+    public void move() {
+
+        if (xpos <= 900 && xpos>100 && ypos<200) {
+            xpos = xpos - (int) dx;
+          //  ypos = 150;
+        }
+        else if (xpos <= 900 && xpos>100 && ypos>400  ) {
+            xpos = xpos + (int) dx;
+        }
+
+        if (xpos <=100 && ypos > 600  ) {
+            xpos = xpos + (int) dx;
+        }
+
+         else if (xpos <= 100) {
+            ypos = ypos + (int) dy;
+        }
+
+
+         if (xpos > 900) {
+            xpos = xpos;
+            ypos = ypos - (int) dy;
+
+        }
+
+
+
+
+        hitbox = new Rectangle(xpos, ypos, width, height);
+    }
 
     /*public void move(char key) {
         if (key == 'w') {//move forward
@@ -45,7 +80,6 @@ public class Mario {
         }*/
     public static void main(String[] args) {
 
+
     }
-
 }
-
